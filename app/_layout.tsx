@@ -1,58 +1,41 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
 
-import { useColorScheme } from '@/components/useColorScheme';
+import "./global.css";
+import React = require('react');
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+// app/_layout.tsx
+import { Stack } from "expo-router";
+import { useColorScheme, StatusBar } from "react-native";
+import { vars } from "nativewind";
+import { LIGHT, DARK } from "@/lib/theme/tokens";
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
+  const scheme = useColorScheme() ?? "light";
+  vars(scheme === "dark" ? DARK : LIGHT);
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+return (
+    <>
+        <StatusBar hidden={true} />
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+        <Stack>
+            <Stack.Screen
+                name="(avoidance)"
+                options={{
+                    headerShown: false,
+                }}
+            />
+        </Stack>
+    </>
   );
 }
+
+//return (
+//  <ThemeProvider>
+//   <View>
+//      <Background>
+//        <Stack screenOptions={{ headerShown: false }} />
+//        <PortalHost />
+//      </Background>
+//   </View>
+//  </ThemeProvider>
+// );
+//}
