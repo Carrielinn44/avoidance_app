@@ -10,7 +10,7 @@ type Ctx = 'missed' | 'skipped' | 'mood' | 'celebrate';
 const phrases: Record<Ctx, string[]> = {
   missed: [
     "Hey, it’s been a little while. Want to dip a toe back in with me?",
-    "I’ve been here waiting. Want to sit with me for a breath?",
+    "Welcome back. Want to sit with me for a breath?",
     "Every return counts. Shall we start now?",
   ],
   skipped: [
@@ -46,7 +46,7 @@ export function Companion({ context = 'missed', onYes, onNo }: { context?: Ctx; 
             <Text style={s.btnText}>Yes, guide me back</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[s.btn, s.btnNo]} onPress={onNo}>
-            <Text style={s.btnText}>Not now, that’s okay</Text>
+            <Text style={s.btnText}>Not now, thanks</Text>
           </TouchableOpacity>
         </View>
       </View>

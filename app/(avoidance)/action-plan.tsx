@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { colors } from '../../lib/colors';
 import { savePlan } from '../../lib/storage';
 import { useRouter } from 'expo-router';
+import { Button } from '@/components/ui/Button';
 
 
 export default function ActionPlan() {
@@ -40,9 +41,12 @@ return (
 ))}
 
 
-<TouchableOpacity style={[ap.btn, ap.btnPrimary]} onPress={onSave}>
-<Text style={ap.btnText}>Save Plan</Text>
+<TouchableOpacity className="rounded-xl bg-cyan-700 active:bg-cyan-800 hover:bg-cyan-950 px-5 py-3" onPress={onSave}>
+<Text className='text-white font-bold'>Save Plan</Text>
 </TouchableOpacity>
+<Button variant='default'>
+    <Text className='text-white'>Test</Text>
+</Button>
 </View>
 </View>
 );
@@ -57,8 +61,7 @@ subtitle: { color: colors.textDim, marginTop: 4 },
 label: { color: colors.text, marginTop: 12, marginBottom: 6 },
 input: { color: colors.text, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 12, marginBottom: 8 },
 btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginTop: 16 },
-btnPrimary: { backgroundColor: '#0b3b2e' },
-btnText: { color: colors.text, fontWeight: '600' },
+btnText: { color: 'white', fontWeight: '600' },
 });//
 //  action-plan.tsx
 //  

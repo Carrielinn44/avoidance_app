@@ -1,14 +1,18 @@
 import React, { useEffect, useState} from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, ImageBackground } from 'react-native';
 import { Audio } from 'expo-av';
 import { useRouter } from 'expo-router';
 import "../global.css"
 
 
+
 import AUDIO_SOURCE from '../../assets/audio/avoidance-intro.wav';
+import {Button, ButtonProps} from "@/components/ui/Button";
+import { images } from "@/constants/images";
+import { MicroPathButton } from '@/components/MicroPathButton';
 
 const transcript = [
-  "“Welcome. Before we begin, start by taking a slow, easy breath.",
+  "Welcome. Before we begin, start by taking a slow, easy breath.",
   "There’s nothing you need to change or fix. This is a place to rest, to notice, and to be.",
   "Most of us know the feeling of turning away from something. A conversation we keep postponing. A feeling that is just too heavy to bear. Even the seemingly small, everyday tasks that occupy our thoughts, yet somehow keep slipping through our fingers.",
   "Avoidance isn’t a flaw. It’s an instinctual and effective form of protection.",
@@ -49,42 +53,48 @@ export default function AvoidanceIntro() {
   }
 
   return (
-    <View className="bg-white shadow-md rounded-xl p-6 text-center text-justify-center">
-      <View className="flex-auto bg-gray-100 p-2 dark:bg-white/10">
-        <Text className='text-accent text-2xl font-semibold mb-2'>Welcome</Text>
-        <Text className="text-slate-600 mb-4">Here’s where your next step begins:</Text>
-      </View>
-
-      <View className="rounded-xl bg-white p-10 text-sm/7 text-gray-700 dark:bg-gray-950 dark:text-gray-300">
-        <Text className='text-accent text-lg p-5'> Welcome to the gentle return. Choose whichever feels right today</Text>
-          <View className='flex flex-col items-center gap-4'>
-            <TouchableOpacity onPress={toggleAudio}>
-                <Text className='text-cyan-950 text-bold'>{isPlaying ? 'Pause Audio' : 'Play Audio'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setShowTranscript(!showTranscript)}>
-                <Text>{showTranscript ? 'Hide Transcript' : 'Read Instead'}</Text>
-            </TouchableOpacity>
+    <View className='flex-1'>
+      <ImageBackground source={images.beach_bg} className='flex-1 justify-stretch'resizeMode='cover' >
+        <ScrollView className='flex-1'>
+        <View className="flex-auto p-6 z-10 text-justify-center my-5 gap-5">
+          <View className="h-10 bg-gray-100 shadow-md rounded-xl p-2 dark:bg-white/10">
+            <Text className='text-gray-700 text-2xl text-center font-semibold mb-2'>Welcome to the Gentle Return</Text>
           </View>
-        {showTranscript && (
-          <ScrollView className="flex-1 px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{minHeight:"100%", paddingBottom: 10 }}>
-            <View className='flex-1 items-center gap-4'>
-              {transcript.map((p, i) => (
-              <Text className='text-gray-900'>• {p}</Text>
-            ))}
+          <View className="flex-1 bg-gray-100 shadow-md rounded-xl p-2">
+            <Text className='text-gray-900 text-lg p-5'>Choose whichever feels right today</Text>
+          <View className='flex-row gap-4 p-5 justify-center'>
+            <Button className='default' onPress={toggleAudio}>
+              <Text className='text-white text-bold'>{isPlaying ? 'Pause' : 'Listen'}</Text>
+            </Button>
+            <Button onPress={() => setShowTranscript(!showTranscript)}>
+              <Text className='text-white text-bold'>{showTranscript ? 'Hide Transcript' : 'Read'}</Text>
+            </Button>
+          </View>
+          <View className='flex-1 bg-gray-100 p-2 m-2'>
+                        {showTranscript && (
+            <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{minHeight:"50%", padding:50, flexGrow:1 }}>
+              <View className='flex-1'>
+                  {transcript.map((p) => (
+                    <Text className='text-gray-900 text-base'>    {p}</Text>
+                  ))}
+              </View>
+            </ScrollView>
+                  )}     
+          </View>
             </View>
-          </ScrollView>
-        )}
-      </View>
-
-      <View className="grid gap-6 max-w-xl mx-auto">
-        <Text className="text-center text-semibold text-lg">Where would you like to begin?</Text>
-        <TouchableOpacity onPress={() => router.push('/(avoidance)/gentle-return')}>
-          <Text>Start the Sequence</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/(avoidance)/support-hub')}>
-          <Text>Explore Freely</Text>
-        </TouchableOpacity>
-      </View>
+              <View className="flex-2 bg-gray-100 grid shadow-md rounded-xl p-5 gap-3 m-6">
+                <Text className="text-center text-gray-900 text-semibold text-lg">Where would you like to begin?</Text>
+              <TouchableOpacity className="rounded-xl bg-cyan-700 active:bg-cyan-800 hover:bg-cyan-900 px-5 py-3" onPress={() => router.push('/(avoidance)/gentle-return')}>
+                <Text className="text-white text-base font-semibold">Start the Sequence</Text>
+              </TouchableOpacity>
+              <TouchableOpacity className="rounded-xl bg-cyan-700 active:bg-cyan-800 px-5 py-3" onPress={() => router.push('/(avoidance)/support-hub')}>
+                <Text className="text-white text-base font-semibold">Explore Freely</Text>
+              </TouchableOpacity>
+              <MicroPathButton />
+            </View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
     </View>
   );
 }

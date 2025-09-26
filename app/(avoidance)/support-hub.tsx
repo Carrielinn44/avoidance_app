@@ -2,7 +2,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { colors } from "../../lib/colors";
-import React = require("react");
+import React from "react";
 
 export default function SupportHub() {
   const router = useRouter();

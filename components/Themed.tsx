@@ -2,12 +2,11 @@
  * Learn more about Light and Dark modes:
  * https://docs.expo.io/guides/color-schemes/
  */
-
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from './useColorScheme';
-import React = require('react');
+import { Colors } from '@/constants/Colors';
+import { useColorScheme } from '../components/useColorScheme';
+import React from 'react';
 
 type ThemeProps = {
   lightColor?: string;

@@ -8,19 +8,16 @@ import { images } from '@/constants/images';
 const TabIcon = ({ focused, icon, title }: any) => {
     if (focused) {
         return (
-            <ImageBackground
-                source={images.highlight}
-                className="flex flex-row w-full flex-1 min-w-[112px] min-h-14 mt-4 justify-center items-center rounded-full overflow-hidden"
-            >
-                <Image source={icon} tintColor="#151312" className="size-5" />
-                <Text className="text-secondary text-base font-semibold ml-2">{title}</Text>
-            </ImageBackground>
+            <View>
+               <Image source={icon} tintColor="#151312" className="size-4" />
+                <Text className="text-accent text-base font-semibold m-2">{title}</Text>
+             </View>
         );
     }
 
     return (
-        <View className="size-full justify-center items-center mt-4 rounded-full">
-            <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+        <View className="size-full justify-center items-center m-4 rounded-full">
+            <Image source={icon} tintColor="#A8B5DB" className="size-4" />
         </View>
     );
 }
@@ -37,10 +34,10 @@ const _Layout = () => {
                     alignItems: "center",
                 },
                 tabBarStyle: {
-                    backgroundColor: "#0F0D23",
-                    borderRadius: 50,
-                    marginHorizontal: 20,
-                    marginBottom: 36,
+                    backgroundColor: "#000",
+                    borderRadius: 10,
+                    marginHorizontal: 5,
+                    marginBottom: 5,
                     height: 52,
                     position: "absolute",
                     overflow: "hidden",
@@ -91,25 +88,10 @@ const _Layout = () => {
                             icon={icons.save}
                             title="Support Hub"
                         />
-
                     ),
                 }}
             />
-
-            <Tabs.Screen
-                name="profile"
-                options={{
-                    title: 'Profile',
-                    headerShown: false,
-                    tabBarIcon: ({ focused }) => (
-                        <TabIcon
-                            focused={focused}
-                            icon={icons.person}
-                            title="Profile"
-                        />
-                    ),
-                }}
-            />
+            
         </Tabs>
     );
 }
