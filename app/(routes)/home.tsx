@@ -1,7 +1,8 @@
 // app/(routes)/index.tsx – Home (example)
 // =============================
 import { View, Text } from "react-native";
-import { MicroPathButton } from "../../components/MicroPathButton";
+import { MicroPathButton } from "@/components/MicroPathButton";
+import React from "react";
 
 
 export default function Home() {

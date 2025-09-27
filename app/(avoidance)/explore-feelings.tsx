@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../../lib/colors';
-import { saveReflection } from '../../lib/storage';
+import { colors } from '@/lib/colors';
+import { saveReflection } from '@/lib/storage';
 import { useRouter } from 'expo-router';
 
 
@@ -40,7 +40,7 @@ title: { color: colors.text, fontSize: 20, fontWeight: '600' },
 subtitle: { color: colors.textDim, marginTop: 4 },
 input: { color: colors.text, minHeight: 140, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 12, textAlignVertical: 'top', marginTop: 10 },
 btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginTop: 16 },
-btnPrimary: { backgroundColor: '#0b3b2e' },
+btnPrimary: { backgroundColor: colors.primary },
 btnText: { color: colors.text, fontWeight: '600' },
 });//
 //  explore-feelings.tsx

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../../lib/colors';
+import { colors } from '@/lib/colors';
 import { Audio } from 'expo-av';
-import { saveReflection, getAnchor } from '../../lib/storage';
+import { saveReflection, getAnchor } from '@/lib/storage';
 import { useRouter } from 'expo-router';
 
 import PRACTICE_AUDIO from '../../assets/audio/turn-toward.mp3';
@@ -110,10 +110,10 @@ const gr = StyleSheet.create({
   input: { color: colors.text, minHeight: 100, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 12, textAlignVertical: 'top' },
   body: { color: colors.text, lineHeight: 22 },
   btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border },
-  btnPrimary: { backgroundColor: '#346055ff', marginTop: 12 },
-  btnSecondary: { backgroundColor: '#747474ff' },
+  btnPrimary: { backgroundColor: colors.primary, marginTop: 12 },
+  btnSecondary: { backgroundColor: colors.bg },
   btnText: { color: colors.text, fontWeight: '600' },
-  nextBtn: { backgroundColor: '#538074ff', marginTop: 16 },
+  nextBtn: { backgroundColor: colors.accent, marginTop: 16 },
 });
 //
 //  gentle-return.tsx

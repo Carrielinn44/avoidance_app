@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../../lib/colors';
-import { saveDraft } from '../../lib/storage';
+import { colors } from '@/lib/colors';
+import { saveDraft } from '@/lib/storage';
 import { useRouter } from 'expo-router';
 
 
@@ -65,7 +65,7 @@ stem: { backgroundColor: '#1a1f2e', borderRadius: 12, padding: 10, marginBottom:
 stemText: { color: colors.accent },
 input: { color: colors.text, minHeight: 140, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 12, textAlignVertical: 'top', marginTop: 10 },
 btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginTop: 16 },
-btnPrimary: { backgroundColor: '#0b3b2e' },
+btnPrimary: { backgroundColor: colors.primary },
 btnText: { color: colors.text, fontWeight: '600' },
 });//
 //  find-my-words.tsx

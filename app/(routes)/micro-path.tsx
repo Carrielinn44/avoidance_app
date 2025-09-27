@@ -2,7 +2,8 @@
 // =============================
 import { View, Text, Pressable } from "react-native";
 import * as Haptics from "expo-haptics";
-import { useNotificationRotation } from "../../hooks/useNotificationRotation";
+import { useNotificationRotation } from "@/hooks/useNotificationRotation";
+import React from "react";
 
 
 export default function MicroPathScreen() {

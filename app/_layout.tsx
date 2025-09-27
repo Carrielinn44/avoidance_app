@@ -5,9 +5,9 @@ import React from 'react';
 // app/_layout.tsx
 import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
-import { vars, useColorScheme, colorScheme } from "nativewind";
+import { useColorScheme } from "nativewind";
 //import { LIGHT, DARK } from "@/lib/theme/tokens";
-import { Slot, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
@@ -16,7 +16,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export default function RootLayout() {
-    const scheme = useColorScheme();
+    const colorSchemeObj = useColorScheme();
+    const scheme = typeof colorSchemeObj === 'string'
+        ? colorSchemeObj
+        : colorSchemeObj?.colorScheme ?? 'light';
     const router = useRouter();
 useEffect(() => {
     const sub = Notifications.addNotificationResponseReceivedListener((resp) => {
@@ -25,39 +28,39 @@ useEffect(() => {
     });
     return () => sub.remove();
 }, []);
-return <Slot />;
+    return (
+        <SafeAreaProvider>
+            <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+                <>
+                    <StatusBar hidden={true} />
+                    <Stack screenOptions={{
+                        headerShown: false,
+                    }}>
+                        <Stack.Screen
+                            name="(avoidance)"
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <Stack.Screen
+                            name="(path)"
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <Stack.Screen
+                            name="(routes)"
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <PortalHost />
+                    </Stack>
+                </>
+            </ThemeProvider>
+        </SafeAreaProvider>
+    );
 }
-<SafeAreaProvider>
-    <ThemeProvider value={colorScheme=== 'dark' ? DarkTheme : DefaultTheme}>
-        <>
-            <StatusBar hidden={true} />
-            <Stack screenOptions={{
-                headerShown: false,
-
-                }}>
-                <Stack.Screen
-                    name="(avoidance)"
-                    options={{
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(path)"
-                    options={{
-                        headerShown: false,
-                    }}
-                />
-               <Stack.Screen
-                    name="(routes)"
-                    options={{
-                        headerShown: false,
-                    }}
-                />
-                <PortalHost />
-            </Stack>
-        </>
-    </ThemeProvider>
-</SafeAreaProvider>
 
 
 //return (

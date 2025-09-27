@@ -4,6 +4,7 @@ import { strings } from "@/lib/strings";
 import { EmptyState } from "../EmptyState";
 import { router } from "expo-router";
 import { useNotificationRotation } from "@/hooks/useNotificationRotation";
+import React from "react";
 
 // screens/CapstoneFlow.tsx (Expo Router routes as example)
 export function IntegrationPracticeScreen() {
@@ -12,7 +13,7 @@ return (
     <View className="flex-1 p-6 gap-4">
         <Text className="text-xl font-semibold">PATH Integration Practice</Text>
         <Text className="text-base text-zinc-600">Guided 10–12 min • Pause ▸ Anchor ▸ Tune In ▸ Honor</Text>
-        <Pressable onPress={() => router.replace("/success")} className="mt-auto bg-indigo-600 rounded-2xl px-5 py-3">
+        <Pressable onPress={() => router.replace("./success")} className="mt-auto bg-indigo-600 rounded-2xl px-5 py-3">
             <Text className="text-white text-base font-semibold">Finish (demo)</Text>
         </Pressable>
     </View>
@@ -50,7 +51,7 @@ return (
                 primary={strings.empty.library.ctaA}
                 secondary={strings.empty.library.ctaB}
                 onPrimary={() => router.push("/micro-path")}
-                onSecondary={() => router.push("/core")}
+                onSecondary={() => router.push("/(avoidance)/core" as any)}
             />
         </View>
     </ScrollView>

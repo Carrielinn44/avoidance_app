@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { PATH_PROGRAM } from "@/data/program";
 import { Text, ScrollView } from "react-native";
+import React from "react";
 
 
 

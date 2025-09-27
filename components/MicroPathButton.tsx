@@ -3,6 +3,7 @@
 import { Pressable, Text } from "react-native";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
+import React from "react";
 
 
 export function MicroPathButton() {

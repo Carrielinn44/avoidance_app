@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../../lib/colors';
+import { colors } from '@/lib/colors';
 import { useRouter } from 'expo-router';
 
 
@@ -62,10 +62,10 @@ subtitle: { color: colors.textDim, marginTop: 4 },
 label: { color: colors.text, marginTop: 12, marginBottom: 6 },
 row: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
 pill: { borderWidth: 1, borderColor: colors.border, borderRadius: 24, paddingHorizontal: 12, paddingVertical: 6, marginBottom: 8 },
-pillActive: { backgroundColor: '#0b3b2e' },
+pillActive: { backgroundColor: colors.accent },
 pillText: { color: colors.text },
 btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginTop: 16 },
-btnPrimary: { backgroundColor: '#0b3b2e' },
+btnPrimary: { backgroundColor: colors.primary },
 btnText: { color: colors.text, fontWeight: '600' },
 });//
 //  guided-journey.tsx

@@ -1,11 +1,12 @@
 
 // app/(routes)/today.tsx – Today Page
 import { View, Text, Pressable, ActivityIndicator, ScrollView } from "react-native";
-import { useToday } from "../../hooks/useToday";
+import { useToday } from "@/hooks/useToday";
 import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
-import { MicroPathButton } from "../../components/MicroPathButton";
+import { MicroPathButton } from "@/components/MicroPathButton";
 import { Card } from "@/components/ui/Card";
+import React from "react";
 
 
 export default function TodayScreen() {
@@ -40,7 +41,14 @@ return (
                 {item.deepLink && (
                 <Pressable
                     className="px-4 py-2 rounded-xl bg-indigo-600"
-                    onPress={async () => { try { await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);} catch {} ; router.push(item.deepLink); }}
+                    onPress={async () => { 
+                        try { 
+                            await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        } catch {} 
+                        if (item.deepLink) {
+                            router.push(item.deepLink as any);
+                        }
+                    }}
                 >
                         <Text className="text-white font-bold">Open Practice</Text>
                 </Pressable>
@@ -48,7 +56,6 @@ return (
                 <MicroPathButton />
             </View>
         </Card>
-
 
         <View className="mt-6 gap-3">
             <Pressable

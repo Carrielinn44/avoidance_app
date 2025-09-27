@@ -1,7 +1,7 @@
 // app/(avoidance)/support-hub.tsx
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
-import { colors } from "../../lib/colors";
+import { colors } from "@/lib/colors";
 import React from "react";
 
 export default function SupportHub() {
@@ -37,7 +37,7 @@ export default function SupportHub() {
         <Text style={styles.subtitle}>Not sure where to start? We’ll walk together.</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.card, { backgroundColor: "#10201a" }]} onPress={() => router.push("/(avoidance)/gentle-return")}>
+      <TouchableOpacity style={styles.card} onPress={() => router.push("/(avoidance)/gentle-return")}>
         <Text style={styles.title}>🌿 Not Ready Yet</Text>
         <Text style={styles.subtitle}>Return to The Gentle Return.</Text>
       </TouchableOpacity>

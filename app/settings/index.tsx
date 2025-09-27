@@ -1,9 +1,8 @@
 import { View, Text, Switch } from 'react-native'
 import React, { useState } from 'react'
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
 
-const settings = () => {
-  useState(false);
+const Settings = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
@@ -17,14 +16,8 @@ const settings = () => {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-      
-
     </View>
   )
 }
 
-export default settings
-
-function setIsEnabled(arg0: (previousState: any) => boolean) {
-  throw new Error('Function not implemented.');
-}
+export default Settings

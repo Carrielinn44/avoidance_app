@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../../lib/colors';
-import { saveAnchor, getAnchor } from '../../lib/storage';
+import { colors } from '@/lib/colors';
+import { saveAnchor, getAnchor } from '@/lib/storage';
 import { useRouter } from 'expo-router';
 
 export default function AnchorSetup() {
@@ -41,7 +41,7 @@ const as = StyleSheet.create({
   label: { color: colors.text, marginTop: 12, marginBottom: 6 },
   input: { color: colors.text, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 12 },
   btn: { paddingVertical: 12, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginTop: 16 },
-  btnPrimary: { backgroundColor: '#0b3b2e' },
+  btnPrimary: { backgroundColor: colors.primary },
   btnText: { color: colors.text, fontWeight: '600' },
 });
 //
