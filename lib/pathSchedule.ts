@@ -2,11 +2,11 @@ export type PathStep = "pause" | "anchor" | "tuneIn" | "honor";
 
 
 export interface DailyPrompt {
-    week: number;
-    day: number;
-    step: PathStep;
-    title: string;
-    prompt: string;
+week: number;
+day: number;
+step: PathStep;
+title: string;
+prompt: string;
 }
 
 

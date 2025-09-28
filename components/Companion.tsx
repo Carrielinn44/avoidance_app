@@ -3,7 +3,7 @@
 // =============================================================
 import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { colors } from '../lib/colors';
+import { colors } from '@/lib/colors';
 
 type Ctx = 'missed' | 'skipped' | 'mood' | 'celebrate';
 
@@ -24,7 +24,7 @@ const phrases: Record<Ctx, string[]> = {
     "One small step is enough. Want to try it with me?",
   ],
   celebrate: [
-    "You came back — I’m glad you’re here.",
+    "Welcome back — I’m glad you’re here.",
     "Every return matters. This one too.",
     "Look at you, showing up again. That’s worth honoring.",
   ],
@@ -61,8 +61,8 @@ const s = StyleSheet.create({
   text: { color: colors.text, fontSize: 16, lineHeight: 22, marginBottom: 12 },
   row: { flexDirection: 'row', gap: 8 },
   btn: { flex: 1, paddingVertical: 10, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: colors.border },
-  btnYes: { backgroundColor: '#0b3b2e' },
-  btnNo: { backgroundColor: '#2a2a2a' },
+  btnYes: { backgroundColor: colors.primary },
+  btnNo: { backgroundColor: colors.accent },
   btnText: { color: colors.text },
 });
 

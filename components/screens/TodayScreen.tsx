@@ -1,8 +1,6 @@
-// screens/TodayScreen.tsx
-// =============================
-import { View, Text, Pressable, Button } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { useState } from "react";
-import { pathSchedule, getPromptForDay } from "../../lib/pathSchedule";
+import { pathSchedule, getPromptForDay } from "@/lib/pathSchedule";
 import { router } from "expo-router";
 import React from "react";
 
@@ -24,20 +22,18 @@ return (
 
 
 return (
-  <>
-    <View className="flex-1 p-6 gap-6">
-      <Text className="text-2xl font-bold">Today’s Focus</Text>
-      <View className="rounded-2xl bg-zinc-100 dark:bg-zinc-800 p-5">
-        <Text className="text-lg font-semibold mb-2">{prompt.title}</Text>
-        <Text className="text-base text-zinc-700 dark:text-zinc-200">{prompt.prompt}</Text>
-      </View>
-      <Pressable
-        onPress={() => router.push("/micro-path")}
-        className="rounded-2xl bg-emerald-600 px-5 py-3"
-      >
-        <Text className="text-white text-base font-semibold">Do Today’s Practice</Text>
-      </Pressable>
-    </View>
-  </>
+<View className="flex-1 p-6 gap-6">
+<Text className="text-2xl font-bold">Today’s Focus</Text>
+<View className="rounded-2xl bg-zinc-100 dark:bg-zinc-800 p-5">
+<Text className="text-lg font-semibold mb-2">{prompt.title}</Text>
+<Text className="text-base text-zinc-700 dark:text-zinc-200">{prompt.prompt}</Text>
+</View>
+<Pressable
+onPress={() => router.push("/micro-path")}
+className="rounded-2xl bg-emerald-600 px-5 py-3"
+>
+<Text className="text-white text-base font-semibold">Do Today’s Practice</Text>
+</Pressable>
+</View>
 );
 }

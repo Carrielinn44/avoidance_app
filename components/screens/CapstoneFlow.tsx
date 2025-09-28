@@ -2,6 +2,7 @@ import { Pressable, View, Text, ScrollView } from "react-native";
 import { MicroPathButton } from "../MicroPathButton";
 import { strings } from "@/lib/strings";
 import { EmptyState } from "../EmptyState";
+import { completePractice } from "@/lib/practice";
 import { router } from "expo-router";
 import { useNotificationRotation } from "@/hooks/useNotificationRotation";
 import React from "react";
@@ -13,7 +14,11 @@ return (
     <View className="flex-1 p-6 gap-4">
         <Text className="text-xl font-semibold">PATH Integration Practice</Text>
         <Text className="text-base text-zinc-600">Guided 10–12 min • Pause ▸ Anchor ▸ Tune In ▸ Honor</Text>
-        <Pressable onPress={() => router.replace("./success")} className="mt-auto bg-indigo-600 rounded-2xl px-5 py-3">
+        <Pressable onPress={async () => {
+          await completePractice({ type: "integration" });
+          router.replace("./success");
+        }} 
+        className="mt-auto bg-indigo-600 rounded-2xl px-5 py-3">
             <Text className="text-white text-base font-semibold">Finish (demo)</Text>
         </Pressable>
     </View>

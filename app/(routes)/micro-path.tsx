@@ -4,6 +4,7 @@ import { View, Text, Pressable } from "react-native";
 import * as Haptics from "expo-haptics";
 import { useNotificationRotation } from "@/hooks/useNotificationRotation";
 import React from "react";
+import { completePractice } from "@/lib/practice";
 
 
 export default function MicroPathScreen() {
@@ -15,6 +16,7 @@ return (
 <Pressable
 className="mt-4 rounded-2xl bg-zinc-900 px-5 py-3"
 onPress={async () => {
+    await completePractice({ type: "micro" });
 try { await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);} catch {}
 // TODO: run the 60s sequence; here we fake completion
 await sendCelebration();
